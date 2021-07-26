@@ -54,6 +54,8 @@
       <h2>Selon votre âge</h2>
       <p>
         <?php
+            // Calcul du tarif selon l'âge. On fait une boucle et un if dedans pour vérifier les conditions
+            // de tarif selon l'âge
             for ($age = 1; $age < 100; $age++) {
                 echo $age . ' ans : ';
 
