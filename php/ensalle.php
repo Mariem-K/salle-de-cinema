@@ -144,7 +144,6 @@
                     echo '</ul>';
                 }
                 ?>
-        </section>
     </main>
     <?php require "footer.php"; ?>
 </body>

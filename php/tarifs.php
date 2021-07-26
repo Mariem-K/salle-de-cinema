@@ -15,7 +15,36 @@
     <section id="tarifs">
       <h2>Tarifs</h2>
         <div class="flex">
-        
+            <?php
+                // Étape 5 : Listes des tarifs et des abonnements dynamiques
+                // On utilise désormais des tableaux associatifs
+                // On ne peut boucler sur un tableau qu'avec un foreach
+                $tarifsTickets = [
+                    'Tarif Plein' => 8.3,
+                    'Tarif Réduit' => 6.8,
+                    'Tarif Enfant' => 4.5,
+                    'Supplément 3D' => 1,
+                ];
+                $abonnements = [
+                    'Abonnement 5 places' => '-10%',
+                    'Abonnement 5 places -25ans' => '-20%',
+                    'Abonnement temporaire qui reste pas' => '-100%'
+                ];
+            ?>
+            <ul>
+                <?php
+                    foreach ($tarifsTickets as $tarifsType => $tarifsPrice) {
+                        echo '<li>' . $tarifsType . ' : ' . number_format($tarifsPrice, 2, ',', ' ') . ' &euro;</li>';
+                    }
+                ?>
+            </ul>
+            <ul>
+                <?php
+                    foreach ($abonnements as $abonnementsType => $abonnementsReduction) {
+                        echo '<li>' . $abonnementsType . ' : ' . $abonnementsReduction . '</li>';
+                    }
+                ?>
+            </ul>
         </div>
         <p>
           Tarif Réduit pour les personnes de + de 60 ans et de moins de 16 ans<br>
@@ -24,7 +53,27 @@
       
       <h2>Selon votre âge</h2>
       <p>
+        <?php
+            for ($age = 1; $age < 100; $age++) {
+                echo $age . ' ans : ';
 
+                if ($age < 14) {
+                    $tarif = 4.50;
+                } elseif ($age < 16 || $age > 60) {
+                    $tarif = 6.80;
+                } else {
+                    $tarif = 8.30;
+                }
+
+                if ($age < 25) {
+                    $tarif = $tarif * 0.8;
+                } else {
+                    $tarif = $tarif * 0.9;
+                }
+
+                echo number_format($tarif, 2, ',', ' ') . '&euro;</br>';
+            }
+        ?>
       </p>
     </section>
   </main>
